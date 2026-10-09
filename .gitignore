@@ -1,0 +1,4 @@
+/target
+# Саундтрек в репозиторий не входит: см. assets/audio/README.md
+/assets/audio/*.ogg
+/assets/audio/*.m4a

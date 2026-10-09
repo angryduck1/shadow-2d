@@ -1,0 +1,36 @@
+[package]
+name = "shadow-2d"
+version = "0.3.0"
+edition = "2021"
+
+[dependencies]
+# Только то, что нужно 2D-игре: без 3D, геймпадов и сети.
+# Звук: bevy_audio и формат Ogg Vorbis для саундтрека.
+bevy = { version = "0.16", default-features = false, features = [
+    "std",
+    "async_executor",
+    "multi_threaded",
+    "bevy_log",
+    "bevy_asset",
+    "bevy_audio",
+    "vorbis",
+    "bevy_color",
+    "bevy_state",
+    "bevy_window",
+    "bevy_winit",
+    "bevy_render",
+    "bevy_core_pipeline",
+    "bevy_sprite",
+    "bevy_text",
+    "bevy_ui",
+    "png",
+    "x11",
+] }
+
+# Движок собирается с оптимизацией даже в отладочной сборке: иначе он тормозит.
+[profile.dev.package."*"]
+opt-level = 2
+
+# Тест правил обходит весь граф решений: без оптимизации он идёт минуты.
+[profile.test]
+opt-level = 2
